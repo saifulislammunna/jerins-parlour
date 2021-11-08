@@ -1,18 +1,26 @@
-import React from 'react';
+import React , { useState }  from 'react';
 import {Button,CardGroup,Card} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+ 
+import BookingModal from '../BookingModal/BookingModal'; 
 /* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo } from '@fortawesome/free-solid-svg-icons'; */
-import './Service.css'
+import './Bookings.css'
 
 
 /* service component */
-const Service = (props) => {
-    const {img,name,description,id} = props.service;
-    /* const url = `/service/${id}`; */
+const  Bookings = (props) => {
+    const {img,name,description } = props.booking ;
+   /*  const url = `/service/${id}`; */
+  /*  const [openBooking, setBookingOpen] = useState(false);
+   const handleBookingOpen = () => setBookingOpen(true);
+   const handleBookingClose = () => setBookingOpen(false); */
+   const [show, setShow] = useState(false);
+
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(true);
     return (
        
-        <div>
+        <>
             <div className="single-service">
               {/* card group added */}
             <CardGroup >
@@ -23,7 +31,7 @@ const Service = (props) => {
        
       < p className="text-start"> {description}</p>
       <div>
-     {/*  <Link to={url} > */}<Button> {/* <FontAwesomeIcon icon={faInfo } /> */} Book Now</Button>{/*  </Link> */}
+      <Button onClick={handleShow} >   Book Now</Button>  
       </div>
     </Card.Body>
       
@@ -34,10 +42,14 @@ const Service = (props) => {
   </Card>
   </CardGroup>
     </div>
+    <BookingModal
+    show={show}
+    handleClose ={handleClose}
+    ></BookingModal> 
             
-        </div>
+       </>
         
     );
 };
 /* exporting service component */
-export default Service;
+export default  Bookings;

@@ -8,8 +8,8 @@ import './Bookings.css'
 
 
 /* service component */
-const  Bookings = (props) => {
-    const {img,name,description } = props.booking ;
+const  Bookings = ({ booking}) => {
+    const {img,name,description } = booking ;
    /*  const url = `/service/${id}`; */
   /*  const [openBooking, setBookingOpen] = useState(false);
    const handleBookingOpen = () => setBookingOpen(true);
@@ -43,6 +43,7 @@ const  Bookings = (props) => {
   </CardGroup>
     </div>
     <BookingModal
+    booking={booking}
     show={show}
     handleClose ={handleClose}
     ></BookingModal> 

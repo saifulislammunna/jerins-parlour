@@ -2,12 +2,16 @@
  import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
+ 
 } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Appointment from './Pages/Appointment/Appointment/Appointment';
+import Login from './Pages/Login/Login/Login';
+import Register from './Pages/Login/Register/Register';
+import AuthProvider from './contexts/AuthProvider/AuthProvider';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 
 
@@ -15,19 +19,27 @@ import Appointment from './Pages/Appointment/Appointment/Appointment';
 function App() {
   return (
     <div className="App">
+       <AuthProvider>
        <Router>
        <Switch>
-          <Route path="/appointment">
+          <PrivateRoute path="/appointment">
             <Appointment/>
-          </Route>
+          </PrivateRoute >
           <Route path="/home">
             <Home/>
           </Route>
-          <Route path="/">
+          <Route path="/login">
+            <Login/>
+          </Route>
+          <Route path="/Register">
+            <Register/>
+          </Route>
+          <Route exact path="/">
             <Home/>
           </Route>
         </Switch>
        </Router>
+       </AuthProvider>
     </div>
   );
 }

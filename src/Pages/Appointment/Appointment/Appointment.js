@@ -11,7 +11,7 @@ const Appointment = () => {
         <div>
             <Navigation></Navigation>
             <AvailableAppointments></AvailableAppointments>
-            {/* <BookingModal></BookingModal> */}
+             
         </div>
     );
 };
